@@ -24,6 +24,15 @@ npm run lint       # ESLint
 
 Para previsualizar el build: `npx serve out`.
 
+## Publicación (GitHub Pages)
+
+Cada push a `master` ejecuta `.github/workflows/deploy-pages.yml`, que compila el sitio y lo publica en
+**https://ferdango.github.io/kingbuilder_website/**. Como GitHub Pages sirve el proyecto bajo una subruta,
+el workflow define `NEXT_PUBLIC_BASE_PATH=/kingbuilder_website` (y `NEXT_PUBLIC_SITE_URL` para el sitemap).
+
+Con dominio propio basta con quitar esas variables (o dejarlas vacías): el sitio se genera en la raíz.
+Las rutas a archivos de `/public` usadas con `next/image` o `fetch` deben pasar por `assetPath()` (`src/lib/routes.ts`).
+
 ## Páginas
 
 | Ruta | Descripción | Referencia |
@@ -80,4 +89,4 @@ El logotipo se extrajo en vectores del Figma: `public/brand/` (positivo, negativ
 - **Fotografías**: se usan imágenes de Unsplash (licencia libre) como placeholder. Reemplazar en `src/data/images.ts` por fotografía propia (en `/public`).
 - **Formularios** (contacto y postulación): validan y muestran confirmación, pero no envían datos. Conectar a un CRM/ATS o servicio de formularios (Formspree, HubSpot, etc.).
 - **Libro de Reclamaciones**: el enlace abre el formulario de contacto; implementar el formato oficial (INDECOPI) si corresponde.
-- Actualizar `SITE.url` en `src/data/site.ts` con el dominio definitivo.
+- Con el dominio definitivo, configurar `NEXT_PUBLIC_SITE_URL` (o el valor por defecto de `SITE.url` en `src/data/site.ts`).

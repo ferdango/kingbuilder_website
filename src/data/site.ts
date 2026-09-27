@@ -5,7 +5,8 @@ export const SITE = {
   tagline: "Sistemas inteligentes, obras indestructibles.",
   description:
     "Construcción e implementación tecnológica de alta ingeniería para el sector minero. Soluciones robustas, seguras y eficientes para los entornos más exigentes.",
-  url: "https://www.kingbuilder.com",
+  // URL pública del sitio (sitemap, datos estructurados). Se sobrescribe en el despliegue.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kingbuilder.com",
   email: "hola@kingbuilder.com",
   phone: "+51 908 456 678",
   phoneHref: "tel:+51908456678",

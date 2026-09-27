@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, CornerDownLeft, Search, X } from "lucide-react";
 import type { SearchEntry } from "@/lib/catalog";
+import { assetPath } from "@/lib/routes";
 import { cn, normalize } from "@/lib/utils";
 
 const SUGGESTIONS = ["cisterna", "LTE", "campamento", "anticolisión", "drones", "martillo"];
@@ -23,7 +24,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
     if (!d) return;
     if (open && !requested.current) {
       requested.current = true;
-      fetch("/search-index.json")
+      fetch(assetPath("/search-index.json"))
         .then((r) => r.json())
         .then(setIndex)
         .catch(() => {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "@/lib/routes";
 
 /**
  * Logotipo como archivo SVG estático (se descarga una vez y queda en caché).
@@ -15,7 +16,7 @@ export function LogoImage({
 }) {
   return (
     <Image
-      src={`/brand/kingbuilder-logo-${variant}.svg`}
+      src={assetPath(`/brand/kingbuilder-logo-${variant}.svg`)}
       alt="King Builder"
       width={349}
       height={89}
